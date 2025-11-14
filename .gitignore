@@ -1,0 +1,36 @@
+# Archivos de compilación de Eclipse
+/bin/
+/build/
+
+# Archivos de configuración de Eclipse
+/.classpath
+/.project
+/.settings/
+
+# Archivos generados por Maven
+/target/
+/pom.xml.tag
+/pom.xml.releaseBackup
+/pom.xml.versionsBackup
+/logs/
+dependency-reduced-pom.xml
+
+# Archivos generados por Gradle
+.gradle/
+build/
+
+# Archivos temporales de sistema
+*.tmp
+*.bak
+*.swp
+*.DS_Store
+Thumbs.db
+
+# Archivos de Eclipse específicos de ejecución
+/.launch
+
+# Archivos de objectDB (si lo usas)
+*.odb
+
+# Otros archivos de logs o caché
+*.log
