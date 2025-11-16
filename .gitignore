@@ -34,3 +34,8 @@ Thumbs.db
 
 # Otros archivos de logs o caché
 *.log
+
+.github/workflows/
+
+# Ignorar archivos rides.temp y variaciones
+rides.temp*

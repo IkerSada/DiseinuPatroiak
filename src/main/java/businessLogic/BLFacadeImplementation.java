@@ -24,6 +24,8 @@ import exceptions.erreklamazioaEbatzitaException;
 import exceptions.AlertaAlreadyExistException;
 import exceptions.KotxeaAlreadyExistException;
 import exceptions.RideAlreadyExistException;
+import java.util.Vector;
+import iterator.ExtendedIterator;
 
 /**
  * It implements the business logic as a web service.
@@ -360,5 +362,21 @@ public class BLFacadeImplementation  implements BLFacade {
 	public Ride getRide(int bidaiZenbaki) {
 		return dbManager.getRide(bidaiZenbaki);
 	}
+
+	@WebMethod
+	public Vector<String> getDepartingCities() {
+	    dbManager.open();    
+	    Vector<String> cities = new Vector<String>(dbManager.getDepartCities());    
+	    dbManager.close();
+	    return cities;
+	}
+
+	@WebMethod
+	public ExtendedIterator<String> getDepartingCitiesIterator() {
+	    Vector<String> cities = this.getDepartingCities();
+	    return new ExtendedIteratorCities(cities);
+	}
+
+
 
 }

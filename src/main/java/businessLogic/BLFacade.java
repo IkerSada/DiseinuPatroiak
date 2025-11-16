@@ -2,6 +2,7 @@ package businessLogic;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Vector;
 
 //import domain.Booking;
 import domain.Ride;
@@ -21,6 +22,7 @@ import exceptions.erreklamazioaEbatzitaException;
 import exceptions.AlertaAlreadyExistException;
 import exceptions.KotxeaAlreadyExistException;
 import exceptions.RideAlreadyExistException;
+import iterator.ExtendedIterator;
 
 import javax.jws.WebMethod;
 import javax.jws.WebService;
@@ -36,6 +38,19 @@ public interface BLFacade  {
 	 * @return collection of cities
 	 */
 	@WebMethod public List<String> getDepartCities();
+	
+	/**
+	 * This method returns a vector of the cities from which the rides depart
+	 * @return vector of cities
+	 */
+	@WebMethod public Vector<String> getDepartingCities();
+	
+	/**
+	 * This method returns an extended iterator for the departing cities
+	 * @return extended iterator for cities
+	 */
+	
+	@WebMethod public ExtendedIterator<String> getDepartingCitiesIterator();
 	
 	/**
 	 * This method returns all the arrival destinations, from all rides that depart from a given city  

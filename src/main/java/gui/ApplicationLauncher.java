@@ -12,11 +12,36 @@ import configuration.ConfigXML;
 import dataAccess.DataAccess;
 import businessLogic.BLFacade;
 import businessLogic.BLFacadeImplementation;
+import businessLogic.BLFactory;
 
 public class ApplicationLauncher { 
 	
+	public static void main(String[] args) {
+	    ConfigXML c = ConfigXML.getInstance();
+	    System.out.println(c.getLocale());
+	    Locale.setDefault(new Locale(c.getLocale()));
+	    System.out.println("Locale: " + Locale.getDefault());
+	    
+	    MainGUI a = new MainGUI();
+	    a.setVisible(true);
+
+	    try {
+	        BLFacade appFacadeInterface;
+	        UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
+	        
+	        BLFactory factory = new BLFactory();
+	        appFacadeInterface = factory.getBusinessLogicFactory(c.isBusinessLogicLocal());
+	        
+	        MainGUI.setBussinessLogic(appFacadeInterface);
+	        
+	    } catch (Exception e) {
+	        a.jLabelSelectOption.setText("Error: " + e.toString());
+	        a.jLabelSelectOption.setForeground(Color.RED);
+	        System.out.println("Error in ApplicationLauncher: " + e.toString());
+	    }
+	}
 	
-	
+	/*
 	public static void main(String[] args) {
 
 		ConfigXML c=ConfigXML.getInstance();
@@ -73,6 +98,6 @@ public class ApplicationLauncher {
 		//a.pack();
 
 
-	}
+	}*/
 
 }
